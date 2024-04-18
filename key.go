@@ -9,54 +9,35 @@ type OutlineKey struct {
 	AccessURL string `json:"accessUrl"`
 }
 
-type KeyBuilder interface {
-	SetID(id string) KeyBuilder
-	SetName(name string) KeyBuilder
-	SetPassword(password string) KeyBuilder
-	SetPort(port int64) KeyBuilder
-	SetMethod(method string) KeyBuilder
-	Build() *OutlineKey
-}
-
-type keyBuilder struct {
-	key *OutlineKey
-}
-
 type BytesTransferred struct {
 	BytesTransferredByUserId map[string]int64 `json:"bytesTransferredByUserId"`
 }
 
-func NewKeyBuilder() KeyBuilder {
-	return &keyBuilder{
-		key: &OutlineKey{},
-	}
+func NewKey() *OutlineKey {
+	return &OutlineKey{}
 }
 
-func (k *keyBuilder) SetID(id string) KeyBuilder {
-	k.key.ID = id
+func (k *OutlineKey) SetID(id string) *OutlineKey {
+	k.ID = id
 	return k
 }
 
-func (k *keyBuilder) SetName(name string) KeyBuilder {
-	k.key.Name = name
+func (k *OutlineKey) SetName(name string) *OutlineKey {
+	k.Name = name
 	return k
 }
 
-func (k *keyBuilder) SetPassword(password string) KeyBuilder {
-	k.key.Password = password
+func (k *OutlineKey) SetPassword(password string) *OutlineKey {
+	k.Password = password
 	return k
 }
 
-func (k *keyBuilder) SetPort(port int64) KeyBuilder {
-	k.key.Port = port
+func (k *OutlineKey) SetPort(port int64) *OutlineKey {
+	k.Port = port
 	return k
 }
 
-func (k *keyBuilder) SetMethod(method string) KeyBuilder {
-	k.key.Method = method
+func (k *OutlineKey) SetMethod(method string) *OutlineKey {
+	k.Method = method
 	return k
-}
-
-func (k *keyBuilder) Build() *OutlineKey {
-	return k.key
 }

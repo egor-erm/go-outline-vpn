@@ -5,8 +5,9 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/valyala/fasthttp"
 	"time"
+
+	"github.com/valyala/fasthttp"
 )
 
 type OutlineVPN struct {
